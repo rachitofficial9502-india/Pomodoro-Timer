@@ -1,0 +1,104 @@
+body {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f4f4f4;
+}
+
+#dark-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ff6347;   /* bright tomato */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.4rem;
+  padding: 0;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s, transform 0.2s, filter 0.2s;
+}
+
+/* Hover effect */
+#dark-btn:hover {
+  filter: brightness(1.15);
+  transform: scale(1.08);
+}
+
+/* Button appearance when page itself is in dark mode */
+body.dark-mode #dark-btn {
+  background-color: #333;
+  color: #ffb347; /* warm golden tone for contrast */
+}
+
+
+#timer-display {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  background-color: tomato;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.2s;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ff6347;
+}
+
+input[type="number"] {
+  width: 160px;
+  padding: 10px 12px;
+  margin: 20px auto;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: 2px solid tomato;
+  border-radius: 8px;
+  text-align: center;
+  outline: none;
+  transition: 0.3s;
+  background-color: #fffaf7;
+  color: #333;
+}
+
+/* When input is focused */
+input[type="number"]:focus {
+  border-color: #ff4500;
+  box-shadow: 0 0 8px rgba(255, 99, 71, 0.5);
+  background-color: #fff;
+}
+
+/* Placeholder style (the gray hint text) */
+input::placeholder {
+  color: #888;
+  opacity: 1; /* make sure it's visible */
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
