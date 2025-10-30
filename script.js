@@ -23,6 +23,8 @@ function updateTimer() {
     let minutes = Math.floor(time / 60)
     let seconds = time % 60
 
+    localStorage.setItem("time", time)
+
     if (seconds < 10) {
         seconds = "0" + seconds
     }
@@ -50,6 +52,7 @@ function resetTimer () {
     clearInterval(timer)
     isRunning = false
     time = 25 * 60
+    localStorage.removeItem("time")
     timerDisplay.textContent = "25 : 00"
 }
 
@@ -59,8 +62,10 @@ function switchMode() {
     let darkBtn = document.getElementById("dark-btn")
 
     if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("mode", "dark")
         darkBtn.textContent = "🌞"
     } else {
+        localStorage.setItem("mode", "light")
         darkBtn.textContent = "🌙"
     }
 }
@@ -68,3 +73,25 @@ function switchMode() {
 startBtn.addEventListener("click", startTimer);
 pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", resetTimer);
+window.addEventListener("load", function () {
+    savedTime = localStorage.getItem("time")
+
+    if (savedTime) {
+        time = Number(savedTime)
+        updateTimer()
+    }
+
+    if (time > 0) {
+            isRunning = true;
+            timer = setInterval(updateTimer, 1000);
+    }
+
+    savedTheme = localStorage.getItem("mode")
+
+    if (savedTheme == "dark") {
+        document.body.classList.add("dark-mode")
+        darkBtn.textContent = "🌞"
+    } else {
+        darkBtn.textContent = "🌙"
+    }
+})
